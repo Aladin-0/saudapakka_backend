@@ -1,10 +1,12 @@
 from django.urls import path
 from .views import (
-    AdminDashboardStats, 
+    AdminDashboardStats,
+    AdminPropertyDetail, 
     AdminPropertyList, 
     AdminPropertyAction,
     AdminUserList,
-    AdminUserAction
+    AdminUserAction ,
+    
 )
 
 urlpatterns = [
@@ -18,4 +20,7 @@ urlpatterns = [
     # User Management
     path('users/', AdminUserList.as_view(), name='admin-user-list'),
     path('users/<uuid:pk>/action/', AdminUserAction.as_view(), name='admin-user-action'),
+
+    # View Single Property (Details + Docs)
+    path('properties/<uuid:pk>/', AdminPropertyDetail.as_view(), name='admin-prop-detail'),
 ]

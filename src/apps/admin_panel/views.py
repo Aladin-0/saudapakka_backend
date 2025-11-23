@@ -140,3 +140,12 @@ class AdminUserAction(APIView):
             return Response({"message": "User unblocked"})
             
         return Response({"error": "Invalid action"}, status=400)
+    
+class AdminPropertyDetail(generics.RetrieveAPIView):
+    """
+    Get FULL details of a single property (including Document URLs) for Admin Review.
+    """
+    permission_classes = [IsSuperAdmin]
+    from apps.properties.serializers import PropertySerializer
+    serializer_class = PropertySerializer
+    queryset = Property.objects.all()

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import SendOtpView, VerifyOtpView, KycSubmissionView, UpgradeRoleView, SearchProfileView, AdminDashboardStats
+from .views import SendOtpView, VerifyOtpView, KycSubmissionView, UpgradeRoleView, SearchProfileView, AdminDashboardStats, UserProfileView
 
 urlpatterns = [
     path('auth/login/', SendOtpView.as_view(), name='login-otp'),
@@ -10,4 +10,5 @@ urlpatterns = [
     path('user/upgrade/', UpgradeRoleView.as_view(), name='upgrade-role'),
     path('search-profiles/', SearchProfileView.as_view(), name='search-profiles'),
     path('admin/stats/', AdminDashboardStats.as_view(), name='admin-stats'),
+    path('user/me/', UserProfileView.as_view(), name='user-profile'),
 ]

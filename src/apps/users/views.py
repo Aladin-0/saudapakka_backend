@@ -175,3 +175,31 @@ class AdminDashboardStats(APIView):
             "pending_properties": Property.objects.filter(verification_status='PENDING').count(),
             "verified_properties": Property.objects.filter(verification_status='VERIFIED').count(),
         })
+
+class UserProfileView(APIView):
+    """
+    Get or Update the logged-in user's details.
+    """
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+        # Return full user details + KYC status + Broker Profile
+        serializer = UserSerializer(request.user)
+        data = serializer.data
+        
+        # Add extra context (KYC status)
+        try:
+            data['kyc_status'] = request.user.kycverification.status
+        except:
+            data['kyc_status'] = 'NOT_SUBMITTED'
+            
+        return Response(data)
+
+    def patch(self, request):
+        # Allow updating Name and Email
+        user = request.user
+        serializer = UserSerializer(user, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=400)

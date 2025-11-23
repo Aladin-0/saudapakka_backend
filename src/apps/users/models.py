@@ -4,22 +4,22 @@ from django.db import models
 
 class User(AbstractUser):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    email = models.EmailField(unique=True)
+    phone_number = models.CharField(max_length=15, blank=True, null=True)
     
-    # CHANGED: Email is now required and unique
-    email = models.EmailField(unique=True) 
-    phone_number = models.CharField(max_length=15, blank=True, null=True) # Optional now
+    # --- MISSING FIELD ADDED HERE ---
+    full_name = models.CharField(max_length=255, blank=True, default='') 
     
     is_active_seller = models.BooleanField(default=False)
     is_active_broker = models.BooleanField(default=False)
     
-    # We also need a field to store the OTP temporarily
+    # OTP Fields
     otp = models.CharField(max_length=6, blank=True, null=True)
     otp_created_at = models.DateTimeField(blank=True, null=True)
 
-    USERNAME_FIELD = 'email'  # Login with Email
-    REQUIRED_FIELDS = ['username', 'phone_number']
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username'] # 'full_name' is not required for admin creation, but required for app usage
 
-    # Fix conflicts (Keep these as they were)
     groups = models.ManyToManyField('auth.Group', related_name='custom_user_set', blank=True)
     user_permissions = models.ManyToManyField('auth.Permission', related_name='custom_user_set', blank=True)
 
