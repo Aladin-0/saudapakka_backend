@@ -1,0 +1,35 @@
+admin id password :   
+
+id :   admin
+pass : admin
+
+
+{
+    "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTc2NTA0MTQyMiwiaWF0IjoxNzYzODMxODIyLCJqdGkiOiI0NmZhNjNiNWMzNmY0ZGE5YmNkNzBlYTJlZWI2YWJmNCIsInVzZXJfaWQiOiIyYTFkYTMzNi05MzhiLTQ5ZjUtOGRmNi05ZWIxNGJhMjFmZjIifQ.qvnnxyhAIn6RcZj3F-X-ez-0_ElF0cEu3VCM8sj6U8g",
+    "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY0NDM2NjIyLCJpYXQiOjE3NjM4MzE4MjIsImp0aSI6IjgyZmM2Mjg3MmI0NjQ1YWQ5YTQ1ODE4ZTZiNjYzNWRlIiwidXNlcl9pZCI6IjJhMWRhMzM2LTkzOGItNDlmNS04ZGY2LTllYjE0YmEyMWZmMiJ9.ePfZWEo1DJMZG3d8S1RPAt8wwdDG_xJ9pY0RI3AGCjA",
+    "user": {
+        "id": "2a1da336-938b-49f5-8df6-9eb14ba21ff2",
+        "email": "test@example.com",
+        "is_active_seller": true,
+        "is_active_broker": false
+    }
+}
+
+{
+    "id": "538cc162-5373-4c6c-9159-20aeb4f9e842",
+    "owner": "test@example.com",
+    "title": "Modern 2BHK in Pune",
+    "description": "Walking distance from metro station.",
+    "price": "7500000.00",
+    "property_type": "APARTMENT",
+    "listing_type": "SELL",
+    "status": "ACTIVE",
+    "address_line": "Baner Road, Pune",
+    "latitude": 18.55,
+    "longitude": 73.79,
+    "created_at": "2025-11-22T17:40:52.524828Z",
+    "images": []
+}
+
+docker compose down
+docker compose up
